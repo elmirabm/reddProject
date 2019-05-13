@@ -16,7 +16,7 @@ export const initialState = {
     before:null,//child[0]
     after:null,//last child
     availableMore:false,//if we have more feeds availble that didint fit in current page
-    addNew:false,//the surrent before/after are expired so we need to load latest data
+    addNew:false,//the Current before/after are expired so we need to load latest data
     page:0,//page we are in =>0 is a page we continue reload unless we are at the buttom of the page/ -1 newer feeds / 1 older feeds
     categories:[],
     scrollBy:0,//how many new record added to the page and we need to scroll

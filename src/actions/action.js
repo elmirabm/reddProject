@@ -1,10 +1,9 @@
 import {types} from './types.js'
 
+//call reddit api url to get categories list
 export function loadCategories()
 {
-    
-    var link = 'https://api.reddit.com/subreddits/popular?limit=100';
-   
+    var link = 'https://api.reddit.com/subreddits/popular?limit=100';  
     return dispatch=>{
         fetch(link)
           .then(res =>res.json()).then(json=>{
@@ -18,6 +17,7 @@ export function loadCategories()
 }
 
 
+//call reddit api url , to get last data
 export function loadDataAdd(category,before,limit,top)
 {
     
@@ -40,6 +40,9 @@ export function loadDataAdd(category,before,limit,top)
     }
 }
 
+
+//call reddit api url to get the most recent  25 record 
+//call reddit api url to get next . and previouse page's records- if we have before and after
 export function loadData(category,before,after,limit,page)
 {
     
