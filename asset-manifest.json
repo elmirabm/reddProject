@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/projectred/static/css/main.2e92e69f.chunk.css",
-    "main.js": "/projectred/static/js/main.799dbbfc.chunk.js",
-    "main.js.map": "/projectred/static/js/main.799dbbfc.chunk.js.map",
-    "runtime~main.js": "/projectred/static/js/runtime~main.c5655206.js",
-    "runtime~main.js.map": "/projectred/static/js/runtime~main.c5655206.js.map",
-    "static/css/2.266e55a5.chunk.css": "/projectred/static/css/2.266e55a5.chunk.css",
-    "static/js/2.628b4ab2.chunk.js": "/projectred/static/js/2.628b4ab2.chunk.js",
-    "static/js/2.628b4ab2.chunk.js.map": "/projectred/static/js/2.628b4ab2.chunk.js.map",
-    "index.html": "/projectred/index.html",
-    "precache-manifest.f33dc28debd7ac8062c605bbfbb2644d.js": "/projectred/precache-manifest.f33dc28debd7ac8062c605bbfbb2644d.js",
-    "service-worker.js": "/projectred/service-worker.js",
-    "static/css/2.266e55a5.chunk.css.map": "/projectred/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.2e92e69f.chunk.css.map": "/projectred/static/css/main.2e92e69f.chunk.css.map"
+    "main.css": "/reddProject/static/css/main.2e92e69f.chunk.css",
+    "main.js": "/reddProject/static/js/main.7dcbcd53.chunk.js",
+    "main.js.map": "/reddProject/static/js/main.7dcbcd53.chunk.js.map",
+    "runtime~main.js": "/reddProject/static/js/runtime~main.7dd7dce6.js",
+    "runtime~main.js.map": "/reddProject/static/js/runtime~main.7dd7dce6.js.map",
+    "static/css/2.266e55a5.chunk.css": "/reddProject/static/css/2.266e55a5.chunk.css",
+    "static/js/2.628b4ab2.chunk.js": "/reddProject/static/js/2.628b4ab2.chunk.js",
+    "static/js/2.628b4ab2.chunk.js.map": "/reddProject/static/js/2.628b4ab2.chunk.js.map",
+    "index.html": "/reddProject/index.html",
+    "precache-manifest.045b6dc0bf26e4e6858adfa56ca80bad.js": "/reddProject/precache-manifest.045b6dc0bf26e4e6858adfa56ca80bad.js",
+    "service-worker.js": "/reddProject/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/reddProject/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.2e92e69f.chunk.css.map": "/reddProject/static/css/main.2e92e69f.chunk.css.map"
   }
 }
