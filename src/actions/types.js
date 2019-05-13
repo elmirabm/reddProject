@@ -24,3 +24,6 @@ export const initialState = {
     page0Top:""//we keep the newest record loaded , to make sure we know when we have more 
     
   };
+
+
+

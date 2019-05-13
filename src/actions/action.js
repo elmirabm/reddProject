@@ -2,7 +2,7 @@ import {types} from './types.js';
 import axios from 'axios';
 
 //call reddit api url to get categories list
-export const  loadCategories=() =>async(dispatch)=>
+export const  fetchCategories=() =>async(dispatch)=>
 {
     var link = 'https://api.reddit.com/subreddits/popular?limit=100';  
     await axios.get(link)
@@ -18,7 +18,7 @@ export const  loadCategories=() =>async(dispatch)=>
 
 
 //call reddit api url , to get last data
-export const  loadDataAdd=(category,before,limit,top) =>async(dispatch)=>
+export const  fetchMoreData=(category,before,limit,top) =>async(dispatch)=>
 {
     var link = 'https://api.reddit.com'+category+'new?limit='+(limit+1);//no need count here 
     if(before!=null)
@@ -40,7 +40,7 @@ export const  loadDataAdd=(category,before,limit,top) =>async(dispatch)=>
 
 //call reddit api url to get the most recent  25 record 
 //call reddit api url to get next . and previouse page's records- if we have before and after
-export const  loadData=(category,before,after,limit,page) =>async(dispatch)=>
+export const  fetchData=(category,before,after,limit,page) =>async(dispatch)=>
 {
       
     var link = 'https://api.reddit.com'+category+'new?limit='+limit;//no need count here 
@@ -65,7 +65,7 @@ export const  loadData=(category,before,after,limit,page) =>async(dispatch)=>
 
 
 //load if we have any more new record
-export const  loadAvailbleMore=(category) =>async(dispatch)=>
+export const  fetchLastFeed=(category) =>async(dispatch)=>
 {
       
     var link = 'https://api.reddit.com'+category+'new?limit='+1;

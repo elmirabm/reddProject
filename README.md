@@ -1,3 +1,6 @@
+In this project we are lading reddit page for the most popular 100 sebreddits, with the ability to reload latest posts every minute as well as keep the user current scroll to the record user is reading.
+
+
 Link to the application : https://elmirabm.github.io/reddProject/
 
 
@@ -28,7 +31,12 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 
 ### Deployment
+the github pages is used to deploy the application, you can find the deployed branch under(gh-pages is set to be the default branch.)
+https://github.com/elmirabm/reddProject
 
+
+link to the deployed applciation :
+https://elmirabm.github.io/reddProject/
 
 
 # How does it work :
@@ -121,6 +129,8 @@ This will move th euser to the older or newer pages, with calling before and aft
         App.css: very simple styling
     /Tests:
         test files for reducer and application
+        utils.js : we have some functions that we need to use in most of the tests/ test store and middleware is here to be used in the integration tests
+        we have reducer test based on action , and also integration test to teststore state
 
     /App.js
         the main file that load all data , and handle scroll position  , and intervals 

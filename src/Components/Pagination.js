@@ -1,7 +1,7 @@
 
 import React,{Component} from 'react';
 import {connect} from "react-redux";
-import {loadCategories,loadData} from "../actions/action";
+import {fetchCategories,fetchData} from "../actions/action";
 
 class Pagination extends React.Component {
 
@@ -35,17 +35,17 @@ class Pagination extends React.Component {
     );
     }
     callPreviousPage(){
-        this.props.loadData(this.props.category,this.props.before,null,this.props.limit,-1);
+        this.props.fetchData(this.props.category,this.props.before,null,this.props.limit,-1);
         window.scrollTo(0,0);
      }
    
      callNextPage(){
-      this.props.loadData(this.props.category,null,this.props.after,this.props.limit,1);
+      this.props.fetchData(this.props.category,null,this.props.after,this.props.limit,1);
       window.scrollTo(0,0);
      } 
 
      callFirstPage(){
-        this.props.loadData(this.props.category,null,null,this.props.limit,0);
+        this.props.fetchData(this.props.category,null,null,this.props.limit,0);
         window.scrollTo(0,0);
       }
 
@@ -66,8 +66,8 @@ const mapStateToProps = (state)=>{
     
     const mapDispatchToProps = (distpatch)=>{
       return{
-        loadData :(category,before,after,limit,page) =>{
-            distpatch(loadData(category,before,after,limit,page));
+        fetchData :(category,before,after,limit,page) =>{
+            distpatch(fetchData(category,before,after,limit,page));
           }
       }
     };

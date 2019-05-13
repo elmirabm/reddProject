@@ -3,13 +3,13 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './../Styles/App.css';
 import {connect} from "react-redux";
-import {loadCategories,loadData} from "../actions/action";//limitChange,categoryChange
+import {fetchCategories,fetchData} from "../actions/action";//limitChange,categoryChange
 
 
  class Limit extends React.Component {
 
   componentDidMount(){
-    this.props.loadCategories();
+    this.props.fetchCategories();
   }
 
     render(){
@@ -21,7 +21,7 @@ import {loadCategories,loadData} from "../actions/action";//limitChange,category
                     Category:
                   </div>
                   <div className="col-md-10 col-sm-10">
-                    <select class="form-control" defaultValue = {this.props.category}  onChange= {(e) => this.props.loadData(e.target.value,null,null,this.props.limit,0)}>
+                    <select class="form-control" defaultValue = {this.props.category}  onChange= {(e) => this.props.fetchData(e.target.value,null,null,this.props.limit,0)}>
                     <option value="/r/All/" >All</option>
                     {this.props.categories.map(item=>(
                       <option value={item.data.url} >{item.data.title}</option>
@@ -51,12 +51,12 @@ const mapStateToProps = (state)=>{
   const mapDispatchToProps = (distpatch)=>{
     return{
 
-      loadData :(category,before,after,limit,page) =>{
-        distpatch(loadData(category,before,after,limit,page));
+      fetchData :(category,before,after,limit,page) =>{
+        distpatch(fetchData(category,before,after,limit,page));
       },
-      loadCategories:()=>
+      fetchCategories:()=>
       {
-        distpatch(loadCategories());
+        distpatch(fetchCategories());
       }
     }
   };
@@ -76,7 +76,7 @@ export default connect(mapStateToProps,mapDispatchToProps)(Limit);
                     Number in page:
                   </div>
                   <div className="col-md-10 col-sm-10">
-                    <select class="form-control" defaultValue = {this.props.limit}  onChange= {(e) => this.props.loadData(this.props.category,null,null,e.target.value,0,false)}>
+                    <select class="form-control" defaultValue = {this.props.limit}  onChange= {(e) => this.props.fetchData(this.props.category,null,null,e.target.value,0,false)}>
                         <option value="3" >3</option>
                         <option value="25" selected >25</option>
                         <option value="50">50</option>

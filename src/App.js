@@ -7,7 +7,7 @@ import {Logo} from './Components/Logo.js';
 import Pagination from "./Components/Pagination.js";
 import {Subreddit} from "./Components/Subreddit.js";
 import {connect} from "react-redux";
-import {loadData,loadDataAdd,loadAvailbleMore} from "./actions/action";
+import {fetchData,fetchMoreData,fetchLastFeed} from "./actions/action";
 import Limit from "./Components/Limit.js";
 
 
@@ -63,7 +63,7 @@ class App extends React.Component {
 
   startIntervalMoreAvailble(){
     var interval=setInterval(()=>{
-      this.props.loadAvailbleMore(this.props.category);
+      this.props.fetchLastFeed(this.props.category);
     },5000);
   }
 
@@ -118,12 +118,12 @@ class App extends React.Component {
     this.calculateBeforeAfter();
  };
   callFirstPage(){
-    this.props.loadData(this.props.category,null,null,this.props.limit,0);
+    this.props.fetchData(this.props.category,null,null,this.props.limit,0);
     window.scrollTo(0,0);
   }
 
   callMore(before){
-    this.props.loadDataAdd(this.props.category,before,this.props.limit,this.top);
+    this.props.fetchMoreData(this.props.category,before,this.props.limit,this.top);
   }
  
  
@@ -148,14 +148,14 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (distpatch)=>{
   return{
-    loadData :(category,before,after,limit,page) =>{
-      distpatch(loadData(category,before,after,limit,page));
+    fetchData :(category,before,after,limit,page) =>{
+      distpatch(fetchData(category,before,after,limit,page));
     },
-    loadDataAdd:(category,before,limit,top)=>{
-      distpatch(loadDataAdd(category,before,limit,top));
+    fetchMoreData:(category,before,limit,top)=>{
+      distpatch(fetchMoreData(category,before,limit,top));
     },
-    loadAvailbleMore:(category)=>{
-      distpatch(loadAvailbleMore(category));
+    fetchLastFeed:(category)=>{
+      distpatch(fetchLastFeed(category));
     }
   }
 };
