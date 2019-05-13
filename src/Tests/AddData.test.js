@@ -7,9 +7,6 @@ import reducer from '../reducers/reducer.js';
 
 configure({ adapter: new Adapter() });
 
-
-configure({ adapter: new Adapter() });
-
 describe("Test reducer Set ADD DATA" ,()=>{
 
     let action ;

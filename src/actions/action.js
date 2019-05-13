@@ -1,92 +1,88 @@
-import {types} from './types.js'
+import {types} from './types.js';
+import axios from 'axios';
 
 //call reddit api url to get categories list
-export function loadCategories()
+export const  loadCategories=() =>async(dispatch)=>
 {
     var link = 'https://api.reddit.com/subreddits/popular?limit=100';  
-    return dispatch=>{
-        fetch(link)
-          .then(res =>res.json()).then(json=>{
-            dispatch({
-                type:types.LOAD_CATEGORIES,//"LOAD_CATEGORIES",
-                payload:json.data.children         
-                
-            });
-          })
-    }
+    await axios.get(link)
+    .then(res =>{
+        dispatch({
+            type:types.LOAD_CATEGORIES,//"LOAD_CATEGORIES",
+                payload:res.data.data.children     
+        })
+    })
 }
 
 
+
+
 //call reddit api url , to get last data
-export function loadDataAdd(category,before,limit,top)
+export const  loadDataAdd=(category,before,limit,top) =>async(dispatch)=>
 {
-    
     var link = 'https://api.reddit.com'+category+'new?limit='+(limit+1);//no need count here 
     if(before!=null)
     {
         link = link+'&count='+(limit+1)+'&before='+before;//loadNext <<
     }
-
-    return dispatch=>{
-        fetch(link)
-          .then(res =>res.json()).then(json=>{
-            dispatch({
-                type:types.ADD_DATA,//"ADD_DATA",
-                payload:json.data,            
-                top:top,
-                page:0
-            });
-          })
-    }
+    await axios.get(link)
+    .then(res =>{
+        dispatch({
+            type:types.ADD_DATA,//"ADD_DATA",
+            payload:res.data.data,            
+            top:top,
+            page:0    
+        })
+    })
 }
+
 
 
 //call reddit api url to get the most recent  25 record 
 //call reddit api url to get next . and previouse page's records- if we have before and after
-export function loadData(category,before,after,limit,page)
+export const  loadData=(category,before,after,limit,page) =>async(dispatch)=>
 {
-    
+      
     var link = 'https://api.reddit.com'+category+'new?limit='+limit;//no need count here 
 
-    if(before!=null)
-    {
+    if(before!=null){
         link = link+'&count='+limit+'&before='+before;//loadNext <<
     }
-    if(after!=null)
-    {
+    if(after!=null){
         link = link+'&count='+limit+'&after='+after;//loadPrevious >>
     }
-    return dispatch=>{
-        fetch(link)
-          .then(res =>res.json()).then(json=>{
-            dispatch({
-                type:types.SET_DATA,//"SET_DATA",
-                payload:json.data,            
+    await axios.get(link)
+    .then(res =>{
+        dispatch({
+            type:types.SET_DATA,//"SET_DATA",
+                payload:res.data.data,            
                 page:page,
-                category:category
-            });
-          })
-    }
-}
-export function loadAvailbleMore(category)
-{    
-    var link = 'https://api.reddit.com'+category+'new?limit='+1;//no need count here 
-    
-    return dispatch=>{
-        fetch(link)
-          .then(res =>res.json()).then(json=>{
-            dispatch({
-                type:types.SET_AVAILABLE_MORE,//"SET_AVAILABLE_MORE",
-                name:json.data.children[0].data.name     
-                
-            });
-          })
-    }
+                category:category   
+        })
+    })
 }
 
 
 
+//load if we have any more new record
+export const  loadAvailbleMore=(category) =>async(dispatch)=>
+{
+      
+    var link = 'https://api.reddit.com'+category+'new?limit='+1;
+    await axios.get(link)
+    .then(res =>{
+        dispatch({
+            type:types.SET_AVAILABLE_MORE,//"SET_AVAILABLE_MORE",
+            name:res.data.data.children[0].data.name     
+        })
+    })
+}
 
+
+
+
+
+//update category 
 export function categoryChange(category)
 {
     return{

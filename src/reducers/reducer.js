@@ -3,6 +3,7 @@ import {types,initialState} from '../actions/types';
   const reducer = (state= initialState, action)=>{
     switch(action.type)
     {
+        
         case types.SET_AVAILABLE_MORE:// "SET_AVAILABLE_MORE":
         var setAvailble = false;
             if(state.page0Top!="" && 
@@ -16,6 +17,7 @@ import {types,initialState} from '../actions/types';
             }
         break;
         
+        //laod all categoris for the drop down
         case types.LOAD_CATEGORIES://"LOAD_CATEGORIES":
             state={
                 ...state,
@@ -23,7 +25,8 @@ import {types,initialState} from '../actions/types';
                 availableMore:false
             }
         break;
-      
+        
+        //to load more data add to user current view        
         case types.ADD_DATA://"ADD_DATA":
         var newAdded= action.payload.children.filter(i=>state.items.filter(c=>c.data.id===i.data.id).length===0);
         var diff = newAdded.length;// new added
@@ -68,6 +71,8 @@ import {types,initialState} from '../actions/types';
             }
         }
         break;
+
+        //laod page 0 , or next previouse link clicked
         case types.SET_DATA://"SET_DATA":
        //previous , next call
         if(action.payload.children.length<25)
@@ -89,7 +94,6 @@ import {types,initialState} from '../actions/types';
                 before:action.payload.children[0].data.name,//action.payload.before,
                 page0Top:action.payload.children[0].data.name,
                 isLoaded: true,
-                time: state.time+1,
                 category:action.category,
                 addNew:false,
                 doScroll:false,

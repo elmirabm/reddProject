@@ -2,7 +2,9 @@
   "name": "redditapi",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://elmirabm.github.io/reddProject",
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
@@ -23,7 +25,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,6 +46,7 @@
   },
   "devDependencies": {
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.0"
+    "enzyme-adapter-react-16": "^1.13.0",
+    "gh-pages": "^2.0.1"
   }
 }

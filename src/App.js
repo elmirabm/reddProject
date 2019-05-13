@@ -99,7 +99,9 @@ class App extends React.Component {
         this.top=0;
       }
 
+      console.log(down);
       if(down>23){
+
         down =24
         this. intervalControl(false);
       }
