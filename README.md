@@ -26,21 +26,21 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 
 
-### Deployment
+### 'Deployment'
 
 
 
-# how does it work :
+# 'How does it work' :
 
-###load new data:
-####Solution:
+### load new data:
+#### Solution:
 1. Add the interval that will be run every one minuetes to get new data.
 we ar emaking sure there is always only one interval on.
 2. Interval is only active if :
 a. We are in page 0. That is the most recent page with most recent data, as if user id in the older pages , there is no pont to reload new feeds.
 b. If User is not in the buttom of the page, if user is reading last record, there is no more room for us to scroll data down, so it means if new data is added , user is already in the older page. In this case user an see "most recent" buttom available that can click on it. It will load new data , turn on interval , and also st scroll to the top of the page. 
 
-####Calculate Scroll:
+#### Calculate Scroll:
 We need to keep the user current record top, in the sam page in the same possition, so we find the upper record user can see in the current view, if this current view is not in last scroll position, when we load more data we will add to the top of this page and shift the scroll down by the number if the new record added multiply each record height . 
 
 
@@ -55,7 +55,7 @@ In this case we can just add amount of records that are possible to fit in the c
 
 
 
-####Reddit Before After Challenge:
+#### Reddit Before After Challenge:
 In reddint we have before and after record in each load with all items we can get between them, they are the first and last record of they data we got. They are used to get the data that happend after the first record , and before the last record.
 
 The problem with that is, these record's id are valid till 1000 record in each subreddit, so if we hare in categoty "All" that we might have more than 50 new records in second. If it took us long time to read or reload the page , if we have more than 1000 new record in reddit server memorym the before and after id are not valid anymore, so ww will get the data with 0 children in it.
@@ -79,7 +79,7 @@ when I get the result:I compare the lists
 
 
 
-###Button "Most Recent": 
+### Button "Most Recent": 
 There is new interval call (was not in assignment), Every 5 second we call the reddit link, to get last record , and with the reducer action 'SET_AVAILABLE_MORE' we check: if the last record, is not same as our last record added in the newest feed loaded, we make the button "Most Recent" availble on th etop of the page.
 
 -This will help the user in case they are in older pages, then they know there are new data availble.
@@ -88,14 +88,14 @@ There is new interval call (was not in assignment), Every 5 second we call the r
 
 If user click on this: It will load new data , turn on interval , and also st scroll to the top of the page.
 
-###Button "Category Change": 
+### Button "Category Change": 
 if we change the category we call page 0 with new category and set the interval
 
-###Button "Pagination": 
+### Button "Pagination": 
 This will move th euser to the older or newer pages, with calling before and after append to the reddit api url
 
 
-##Folder structure:
+## Folder structure:
 /src
     /action
         action file 
@@ -129,7 +129,7 @@ This will move th euser to the older or newer pages, with calling before and aft
 
 
 
-##Redux states:
+## Redux states:
 
     isLoaded :false             -> if page is loaded 
     items:[]                    ->  all 25 posts in current page
