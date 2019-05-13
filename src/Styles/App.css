@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+}
+
+.row{
+  margin-top: 10px;
+}
+.titlerow
+{
+  height:40px
+}
+
+
+.comment
+{
+  color:#878A8C;
+}
+
+.coltitle
+{
+  float: none;
+  display: table-cell;
+  vertical-align: bottom;
+}
+
+
+.selector{
+  margin-top: 5px;
+  margin-bottom:5px;
+}
+.sub{
+  height:140px
+}
+.ellipses {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+
+
+
+
+
