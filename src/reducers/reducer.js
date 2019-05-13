@@ -1,26 +1,9 @@
+import {types,initialState} from '../actions/types';
 
-const initialState = {
-    isLoaded :false,
-    items:[],
-    category:"/r/All/",
-    limit:25,
-    intervalTime:60000,
-    pageNumber:0,
-    before:null,
-    after:null,
-    availableMore:false,
-    addNew:false,
-    page:0,
-    categories:[],
-    scrollBy:0,
-    reload:false,
-    page0Top:""
-    
-  };
   const reducer = (state= initialState, action)=>{
     switch(action.type)
     {
-        case "SET_AVAILABLE_MORE":
+        case types.SET_AVAILABLE_MORE:// "SET_AVAILABLE_MORE":
         var setAvailble = false;
             if(state.page0Top!="" && 
                 (action.name!=state.page0Top)
@@ -32,7 +15,8 @@ const initialState = {
                 availableMore:setAvailble
             }
         break;
-        case "LOAD_CATEGORIES":
+        
+        case types.LOAD_CATEGORIES://"LOAD_CATEGORIES":
             state={
                 ...state,
                 categories:action.payload,
@@ -40,19 +24,19 @@ const initialState = {
             }
         break;
       
-        case "ADD_DATA":
+        case types.ADD_DATA://"ADD_DATA":
         var newAdded= action.payload.children.filter(i=>state.items.filter(c=>c.data.id===i.data.id).length===0);
         var diff = newAdded.length;// new added
         var scrollBy=0;
         //if 0 loaded : the before is expired - we need to laod again with null before
         if(action.payload.children.length>0){//this is new 
-            if(newAdded.length>19){
-                var A=newAdded.slice((newAdded.length-(25-5-action.top)),newAdded.length);
+            if(newAdded.length>17){//19
+                var A=newAdded.slice((newAdded.length-(25-7-action.top)),newAdded.length);
                 var B=state.items.splice(0,25-A.length);
                 scrollBy=A.length;
             }
             else {
-                var needFormA= ((25-(action.top+5)>newAdded.length)?newAdded.length:(25-(action.top+5)));
+                var needFormA= ((25-(action.top+7)>newAdded.length)?newAdded.length:(25-(action.top+7)));
                 var A=newAdded.slice((newAdded.length-needFormA),newAdded.length);
                 var B=state.items.splice(0,25-needFormA);
                 scrollBy=A.length;
@@ -84,7 +68,7 @@ const initialState = {
             }
         }
         break;
-        case "SET_DATA":
+        case types.SET_DATA://"SET_DATA":
        //previous , next call
         if(action.payload.children.length<25)
         {
@@ -115,6 +99,7 @@ const initialState = {
         }
         break;
         default:
+            
         break;
     }
    

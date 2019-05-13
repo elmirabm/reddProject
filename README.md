@@ -63,6 +63,17 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/ad
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
+### how does it work :
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+Button "Most Recent": 
+There is new interval call (was not in assignment), Every 5 second we call the reddit link, to get last record , and with the reducer action 'SET_AVAILABLE_MORE' we check: if the last record, is not same as our last record added in the newest feed loaded, we make the button "Most Recent" availble on th etop of the page.
+
+-This will help the user in case they are in older pages, then they know there are new data availble.
+-If we are in the middle of the 1 minutes to the call to get new data , user will know there are  more available.
+-As we dont call 1 minute update any more if user be in the button of th epage and reading the last records,user will know the current oage now is the older page , and there are more oages to see. 
+
+
+
+

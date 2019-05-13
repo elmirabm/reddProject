@@ -17,59 +17,14 @@ class App extends React.Component {
   top;
   before;
 
-  setScroll(){
-    if((!this.props.doScroll) || (this.props.scrollBy==0) ){return;}
-      window.scrollTo(0, (
-        (window.scrollY)
-        +((this.props.scrollBy)*140)));
-  }
-
-  calculateBeforeAfter()
-  {
-      var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
-      document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );
-     
-      var realMax = limit -window.innerHeight;
-      //console.log("real max"+(realMax) );//windows max Y
-      var currentTopRecY = (window.scrollY-140)/140;
-      this.top=Math.floor(currentTopRecY);
-      var down = Math.ceil(currentTopRecY+4);
-      //console.log("currentTopRecY: "+this.top );
-     // console.log("currentLowerRecY: "+ down );
-      if(this.top<0){ 
-        this.top=0;}
-
-      if(down>23){
-        down =24
-        this. intervalControl(false);
-      }
-      else{
-        this. intervalControl(this.props.page==0);
-      }
-      if(this.props.items.length<25){
-        return;
-      } 
-      this.before=this.props.items[this.top+1].data.name;
-  }
-
-  handleScroll = () => {
-   // console.log("scroll"+window.scrollY);
-    this.calculateBeforeAfter();
-    //console.log("-----------------------------------------------------------------------------------------------");
-
- };
-
   componentDidMount(){
     window.addEventListener('scroll', this.handleScroll,true);
     this.callFirstPage();
     this.intervalControl(true);
     this.startIntervalMoreAvailble();
-
   }
 
   render(){
-    
-    
     if(!this.props.isLoaded){
       return <div><Logo/> loading ....</div>
     }
@@ -88,13 +43,10 @@ class App extends React.Component {
         <div className="container">
           <Logo/>          
           <Limit/>
-          <Pagination />
-           
-
+          <Pagination />           
           {this.props.items.map(item =>(
             <Subreddit data={item.data} category={this.props.category}/> 
-            ))}
-           
+            ))}           
            <Pagination />          
         </div>
       );
@@ -110,27 +62,60 @@ class App extends React.Component {
   }
 
   startIntervalMoreAvailble(){
+    debugger;
     var interval=setInterval(()=>{
       this.props.loadAvailbleMore(this.props.category);
     },5000);
   }
 
   intervalControl(turnOn){// we just turn it on for page 0
-  
     if(turnOn)
     {
      if((this.interval==null) ||(this.interval==undefined)){
-       //only get new feeds if we are in page 0 
        this.startInterval();
-      // console.log("turn on interval: "+this.interval)
      }
     }
     else{
-     // console.log("turn off  interval: "+this.interval)
      clearInterval(this.interval);
      this.interval=null;
     }    
   }
+  setScroll(){
+    if((!this.props.doScroll) || (this.props.scrollBy==0) ){return;}
+      window.scrollTo(0, (
+        (window.scrollY)
+        +((this.props.scrollBy)*140)));
+  }
+
+  calculateBeforeAfter()
+  {
+      var limit = Math.max( document.body.scrollHeight, document.body.offsetHeight, 
+      document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight );
+     
+      var realMax = limit -window.innerHeight;
+      var currentTopRecY = (window.scrollY-140)/140;
+      this.top=Math.floor(currentTopRecY);
+      var down = Math.ceil(currentTopRecY+6);
+      if(this.top<0){ 
+        this.top=0;
+      }
+
+      if(down>23){
+        down =24
+        this. intervalControl(false);
+      }
+      else{
+        this. intervalControl(this.props.page==0);
+      }
+      if(this.props.items.length<25){
+        return;
+      } 
+      this.before=this.props.items[this.top+1].data.name;
+  }
+
+  handleScroll = () => {
+    this.calculateBeforeAfter();
+ };
   callFirstPage(){
     this.props.loadData(this.props.category,null,null,this.props.limit,0);
     window.scrollTo(0,0);

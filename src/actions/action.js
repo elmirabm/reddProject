@@ -1,3 +1,4 @@
+import {types} from './types.js'
 
 export function loadCategories()
 {
@@ -8,7 +9,7 @@ export function loadCategories()
         fetch(link)
           .then(res =>res.json()).then(json=>{
             dispatch({
-                type:"LOAD_CATEGORIES",
+                type:types.LOAD_CATEGORIES,//"LOAD_CATEGORIES",
                 payload:json.data.children         
                 
             });
@@ -30,7 +31,7 @@ export function loadDataAdd(category,before,limit,top)
         fetch(link)
           .then(res =>res.json()).then(json=>{
             dispatch({
-                type:"ADD_DATA",
+                type:types.ADD_DATA,//"ADD_DATA",
                 payload:json.data,            
                 top:top,
                 page:0
@@ -56,7 +57,7 @@ export function loadData(category,before,after,limit,page)
         fetch(link)
           .then(res =>res.json()).then(json=>{
             dispatch({
-                type:"SET_DATA",
+                type:types.SET_DATA,//"SET_DATA",
                 payload:json.data,            
                 page:page,
                 category:category
@@ -72,7 +73,7 @@ export function loadAvailbleMore(category)
         fetch(link)
           .then(res =>res.json()).then(json=>{
             dispatch({
-                type:"SET_AVAILABLE_MORE",
+                type:types.SET_AVAILABLE_MORE,//"SET_AVAILABLE_MORE",
                 name:json.data.children[0].data.name     
                 
             });
