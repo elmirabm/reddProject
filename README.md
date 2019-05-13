@@ -26,13 +26,13 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 
 
-### 'Deployment'
+### Deployment
 
 
 
-# 'How does it work' :
+# How does it work :
 
-### load new data:
+### Load new data:
 #### Solution:
 1. Add the interval that will be run every one minuetes to get new data.
 we ar emaking sure there is always only one interval on.
@@ -55,24 +55,24 @@ In this case we can just add amount of records that are possible to fit in the c
 
 
 
-#### Reddit Before After Challenge:
+#### Reddit Before/After Challenge:
 In reddint we have before and after record in each load with all items we can get between them, they are the first and last record of they data we got. They are used to get the data that happend after the first record , and before the last record.
 
 The problem with that is, these record's id are valid till 1000 record in each subreddit, so if we hare in categoty "All" that we might have more than 50 new records in second. If it took us long time to read or reload the page , if we have more than 1000 new record in reddit server memorym the before and after id are not valid anymore, so ww will get the data with 0 children in it.
 In this case we have no other choice rather that loading last feeds.
 We have 2 reducer state to control that :
 
-addNew: Is when we are in page 0 and adding new feeds are returning 0 items.
-relaod: we clicked on next or previouse but they are expired.
+`addNew`: Is when we are in page 0 and adding new feeds are returning 0 items.
+`relaod`: we clicked on next or previouse but they are expired.
 
-there is a condition here that might make an overlap :
+There is a condition here that might make an overlap :
 If we call the interval to get new records, and it return 0 records, there is 2 possibilities :
 1-no new record is availble -> we are fine 
 2-our last before id is expired -> we can never get the new feed as our Id is not exist anymore
 
 
-solution :
-the solution I have for this is : instead of getting 25 record , I call the link with 26 record, that the 26th record is the same first feed I have currently in the page.
+`solution :`
+The solution I have for this is : instead of getting 25 record , I call the link with 26 record, that the 26th record is the same first feed I have currently in the page.
 when I get the result:I compare the lists
 -if they dont have any same records and lenght of the items loaded are 0 -> it is expired and we need to call new link
 -if we have 1 record same (we are good it is not expired) we ahve right records we can add them if they are any. 
