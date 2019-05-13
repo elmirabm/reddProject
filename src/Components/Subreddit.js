@@ -9,8 +9,8 @@ export const Subreddit  =(props) =>
 {   
     
     return(
-        
-    <div id="subreddit" class="container border sub vertical-align: bottom">  
+    
+    <div id="subreddit" class="container sub vertical-align: bottom border">  
               
               <div class="row">
                 <div class="col-2">
@@ -57,9 +57,12 @@ export const Subreddit  =(props) =>
                     </div>
 
                 </div>
+                
 
             </div>
+            
         
     </div>
+  
     );        
 }

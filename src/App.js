@@ -55,9 +55,7 @@ class App extends React.Component {
 
   startInterval(){
     this.interval=setInterval(()=>{
-      //console.log("callload   start");
       this.callMore(this.before);
-      //console.log("callload   done");
     },this.props.intervalTime);
   }
 
@@ -99,7 +97,6 @@ class App extends React.Component {
         this.top=0;
       }
 
-      console.log(down);
       if(down>23){
 
         down =24

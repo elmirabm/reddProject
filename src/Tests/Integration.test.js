@@ -81,8 +81,6 @@ test('fetch data -store is updated - lengh loaded is less thatn 25' , () =>{
         return store.dispatch(fetchData())
         .then(()=>{
             const newState = store.getState();
-
-            console.log(newState);
             expect(newState.items.length).toBe(0);
         });
 
@@ -111,8 +109,6 @@ test('fetch data -store is updated - lengh loaded is less thatn 25' , () =>{
         return store.dispatch(fetchData())
         .then(()=>{
             const newState = store.getState();
-
-            console.log(newState);
             expect(newState.items.length).toBe(25);
             expect(newState.before).toBe('FirstChild');
         });

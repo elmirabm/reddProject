@@ -38,12 +38,9 @@ describe("Test reducer load DATA" ,()=>{
             state.items = [];
             state.addNew= true;
             state.reducer=false;
-
-
             const actionNochildren = action;
             actionNochildren.payload.children=[];
             const newState=reducer(undefined,actionNochildren);
-            console.log(actionNochildren.payload.children.length);
             expect(newState.addNew).toEqual(false);
             expect(newState.page).toEqual(0);
             expect(newState.reload).toEqual(true);

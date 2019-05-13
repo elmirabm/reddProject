@@ -42,7 +42,6 @@ describe("Test reducer Set ADD DATA" ,()=>{
             const actionNochildren = action;
             actionNochildren.payload.children=[];
             const newState=reducer(undefined,actionNochildren);
-            console.log(actionNochildren.payload.children.length);
             expect(newState.addNew).toEqual(true);
             expect(newState.scrollBy).toEqual(0);
             expect(newState.reload).toEqual(false);
