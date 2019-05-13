@@ -63,6 +63,7 @@ In this case we have no other choice rather that loading last feeds.
 We have 2 reducer state to control that :
 
 `addNew`: Is when we are in page 0 and adding new feeds are returning 0 items.
+
 `relaod`: we clicked on next or previouse but they are expired.
 
 There is a condition here that might make an overlap :

@@ -49,7 +49,7 @@ describe("Test reducer Set Available More" ,()=>{
 
         /////
         
-        describe("Test reducer Set Available UI check" ,()=>{
+       /* describe("Test reducer Set Available UI check" ,()=>{
 
             const setUp = (props={
                 callFirstPage:()=>{},
@@ -79,7 +79,7 @@ describe("Test reducer Set Available More" ,()=>{
             });
 
 
-        })
+        })*/
 
 
 
