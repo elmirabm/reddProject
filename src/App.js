@@ -62,7 +62,6 @@ class App extends React.Component {
   }
 
   startIntervalMoreAvailble(){
-    debugger;
     var interval=setInterval(()=>{
       this.props.loadAvailbleMore(this.props.category);
     },5000);
